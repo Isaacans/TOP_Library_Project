@@ -1,0 +1,55 @@
+* {
+    box-sizing: border-box;
+}
+.UI, .heading {
+    width: 74rem;
+    margin: 0rem auto;
+}
+
+.heading {
+    padding: 2rem 0rem 4rem;
+}
+
+.UI {
+    padding: 1rem 0rem;
+    border-top: solid 3px rgb(61, 164, 199);
+    border-bottom: solid 2px rgb(61, 164, 199);
+}
+button {
+    font-size: 1.1em;
+    padding: 0.6em 1.4em;
+    border-radius: 10px;
+    opacity: 1;
+    cursor: pointer;
+    background-color: rgb(137, 215, 241);
+    border: 2px grey solid;
+}
+button:hover {
+    opacity: 0.8;
+}
+
+.shelf {
+    margin-top: 1rem;
+    padding: 3rem;
+    display: grid;
+    grid-template-columns: repeat(4, 17rem);
+    grid-template-rows: 2.5em;
+    grid-auto-rows: 19rem;
+    gap: 2rem;
+    justify-content: center;
+    h2 {
+        margin: 0;
+        grid-column: 1 / 5;
+        font-size: 2em;
+    }
+}
+.card {
+    background-color:rgb(241, 241, 241);
+    text-align: center;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    padding: 1em;
+    font-weight: bold;
+    font-size: 1.2em;
+}
