@@ -38,11 +38,12 @@ button:hover {
     grid-auto-rows: 19rem;
     gap: 2rem;
     justify-content: center;
-    h2 {
-        margin: 0;
-        grid-column: 1 / 5;
-        font-size: 2em;
-    }
+}
+
+.shelf h1 {
+    margin: 0;
+    grid-column: 1 / 5;
+    font-size: 2em;
 }
 
 .shelfCard {
@@ -96,35 +97,35 @@ button:hover {
     grid-auto-flow: row;
     justify-content: center;
     font-size: 1.2em;
-    span.close {
-        position: absolute;
-        top: 0.15em;
-        right: 0.75em;
-        font-size: 2.1em;
-        color: #6d6d6d;
-        font-weight: bold;
-    }
-    span.close:hover {
-        color: #424242;
-        cursor: pointer;
-    }
-    h1 {
-        text-align: left;
-        font-size: 1.3em;
-        margin-bottom: 1.5em;
-    }
-    label {
-        justify-self: start;
-    }
-    input {
-        margin: 0em 0em 1.5em;
-        font-size: 0.8em;
-        padding: 0em 0.3em;
-    }
-    input[type="submit"] {
-        margin-top: 2.5em;
-        justify-self: start;
-        padding: 0.3em 1.5em;
-        font-size: 0.8em;
-    }
+}
+.modal-content span.close {
+    position: absolute;
+    top: 0.15em;
+    right: 0.75em;
+    font-size: 2.1em;
+    color: #6d6d6d;
+    font-weight: bold;
+}
+.modal-content span.close:hover {
+    color: #424242;
+    cursor: pointer;
+}
+.modal-content h1 {
+    text-align: left;
+    font-size: 1.3em;
+    margin-bottom: 1.5em;
+}
+.modal-content label {
+    justify-self: start;
+}
+.modal-content input {
+    margin: 0em 0em 1.5em;
+    font-size: 0.8em;
+    padding: 0em 0.3em;
+}
+.modal-content input[type="submit"] {
+    margin-top: 2.5em;
+    justify-self: start;
+    padding: 0.3em 1.5em;
+    font-size: 0.8em;
 }
