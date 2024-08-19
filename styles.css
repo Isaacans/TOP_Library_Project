@@ -1,5 +1,6 @@
 * {
     box-sizing: border-box;
+    line-height: 1.5;
 }
 .UI, .heading {
     width: 74rem;
@@ -7,12 +8,12 @@
 }
 
 .heading {
-    padding: 2rem 0rem 4rem;
+    padding: 1rem 0rem 0.5rem;
 }
 
 .UI {
-    padding: 1rem 0rem;
-    border-top: solid 3px rgb(61, 164, 199);
+    padding: 0.75rem 0rem;
+    border-top: solid 2px rgb(61, 164, 199);
     border-bottom: solid 2px rgb(61, 164, 199);
 }
 button {
@@ -21,11 +22,11 @@ button {
     border-radius: 10px;
     opacity: 1;
     cursor: pointer;
-    background-color: rgb(137, 215, 241);
-    border: 2px grey solid;
+    background-color: rgb(255 227 100);
+    border: 2px #a3a3a3 solid;
 }
 button:hover {
-    opacity: 0.8;
+    background-color: rgba(255, 227, 100, 0.8);
 }
 
 .shelf {
@@ -43,7 +44,8 @@ button:hover {
         font-size: 2em;
     }
 }
-.card {
+
+.shelfCard {
     background-color:rgb(241, 241, 241);
     text-align: center;
     justify-content: center;
@@ -52,4 +54,77 @@ button:hover {
     padding: 1em;
     font-weight: bold;
     font-size: 1.2em;
+}
+
+.form-modal {
+    display: none;
+    position: fixed;
+    z-index: 1; /* Sit on top */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgba(0,0,0,0.4);
+    /* Fade in */
+    animation-name: modal-fade;
+    animation-duration: 0.3s
+}
+/* Animation fade in keyframes */
+@keyframes modal-fade {
+    from {opacity: 0};
+    to {opacity: 1};
+}
+/* Animation slide down keyframes*/
+@keyframes modal-slide-in {
+    from {top: -100%}
+    to {top: 0}
+}
+.modal-content {
+    /* Slide down */
+    animation-name: modal-slide-in;
+    animation-duration: 0.25s;
+
+    position: relative;
+    background-color: aliceblue;
+    width: 50%;
+    text-align: center;
+    margin: 5% auto;
+    padding: 3em 2em 3em;
+    display: grid;
+    grid-template-columns: 55%;
+    grid-auto-flow: row;
+    justify-content: center;
+    font-size: 1.2em;
+    span.close {
+        position: absolute;
+        top: 0.15em;
+        right: 0.75em;
+        font-size: 2.1em;
+        color: #6d6d6d;
+        font-weight: bold;
+    }
+    span.close:hover {
+        color: #424242;
+        cursor: pointer;
+    }
+    h1 {
+        text-align: left;
+        font-size: 1.3em;
+        margin-bottom: 1.5em;
+    }
+    label {
+        justify-self: start;
+    }
+    input {
+        margin: 0em 0em 1.5em;
+        font-size: 0.8em;
+        padding: 0em 0.3em;
+    }
+    input[type="submit"] {
+        margin-top: 2.5em;
+        justify-self: start;
+        padding: 0.3em 1.5em;
+        font-size: 0.8em;
+    }
 }

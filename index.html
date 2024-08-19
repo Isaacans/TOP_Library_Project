@@ -9,11 +9,36 @@
 <body>
     <h1 class="heading">My Library</h1>
     <div class="UI">
-        <button>New Book</button>
+        <button class="btn" id="new-book-btn">New Book</button>
     </div>
     <div class="shelf">
         <H2>Shelf</H2>
     </div>
+    
+    <div class="form-modal" >
+        <form class="modal-content">
+            <span class="close" id='close-btn'>&times;</span>
+            
+            <H1>Add New Book</H1>
+            
+            <label for="title">Title:</label>
+            <input type="text" id="title" name="title" placeholder="Book Title"></input>
+            
+            <label for="author">Author:</label>
+            <input type="text" id="author" name="author" placeholder="Author's Name"></input>
+            
+            <label for="pages">Number of Pages:</label>
+            <input type="text" id="pages" name="pages" placeholder="E.g.567"></input>
+            
+            <label for="read">Finished Reading?</label>
+            <input type="text" id="read" name="read" placeholder="yes / no"></input>
+
+            <input type="submit">
+        </form>
+    </div>
+    
+    
+    
     <script src="code.js"></script>
 </body>
 </html>
