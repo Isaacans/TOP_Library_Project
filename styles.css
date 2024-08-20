@@ -16,7 +16,7 @@
     border-top: solid 2px rgb(61, 164, 199);
     border-bottom: solid 2px rgb(61, 164, 199);
 }
-button {
+.UI button {
     font-size: 1.1em;
     padding: 0.6em 1.4em;
     border-radius: 10px;
@@ -25,7 +25,7 @@ button {
     background-color: rgb(255 227 100);
     border: 2px #a3a3a3 solid;
 }
-button:hover {
+.UI button:hover {
     background-color: rgba(255, 227, 100, 0.8);
 }
 
@@ -51,10 +51,14 @@ button:hover {
     text-align: center;
     justify-content: center;
     display: flex;
+    flex-direction: column;
+    gap: 0.4em;
     align-items: center;
     padding: 1em;
-    font-weight: bold;
     font-size: 1.2em;
+}
+.shelfCard > div > span {
+    font-weight: bold;
 }
 
 .form-modal {
@@ -67,28 +71,54 @@ button:hover {
     height: 100%;
     overflow: auto; /* Enable scroll if needed */
     background-color: rgba(0,0,0,0.4);
+
     /* Fade in */
-    animation-name: modal-fade;
+    animation-name: modal-fade-in;
     animation-duration: 0.3s
 }
-/* Animation fade in keyframes */
-@keyframes modal-fade {
+/* Fade in animation keyframes */
+@keyframes modal-fade-in {
     from {opacity: 0};
     to {opacity: 1};
 }
-/* Animation slide down keyframes*/
-@keyframes modal-slide-in {
+/* Slide down */
+.modal-content {
+    animation-name: modal-slide-down;
+    animation-duration: 0.25s;
+}
+/* Slide down animation keyframes*/
+@keyframes modal-slide-down {
     from {top: -100%}
     to {top: 0}
 }
-.modal-content {
-    /* Slide down */
-    animation-name: modal-slide-in;
-    animation-duration: 0.25s;
+/* Fade out */
+.form-modal[style*="none"] {
+    animation-name: modal-fade-out;
+    animation-duration: 0.4s;
+    opacity: 0;
+}
+/* Fade out animation keyframes */
+@keyframes modal-fade-out {
+    from {display: block; opacity: 1};
+    to {display: none; opacity: 0};
+}
+/* Slide up */
+.form-modal[style*="none"] > form.modal-content {
+    animation-name: modal-slide-up;
+    animation-duration: 0.3s;
+    top: -100%;
+}
+/* Slide up animation keyframes */
+@keyframes modal-slide-up {
+    from {top: 0}
+    to {top: -100%}
+}
 
+.modal-content {
     position: relative;
     background-color: aliceblue;
-    width: 50%;
+    width: 55%;
+    height: 85%;
     text-align: center;
     margin: 5% auto;
     padding: 3em 2em 3em;
@@ -123,9 +153,35 @@ button:hover {
     font-size: 0.8em;
     padding: 0em 0.3em;
 }
-.modal-content input[type="submit"] {
+/* Remove number input field arrows/spinners */
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type=number] {
+    -moz-appearance: textfield; /* Firefox */
+    -webkit-appearance: none; /* Chrome, Safari */
+    appearance: none; /* Standard */
+}
+.modal-content > select {
+    padding: 0.1em .2em;
+    font-size: 0.8em;
+}
+.modal-content > input[type="submit"] {
     margin-top: 2.5em;
     justify-self: start;
-    padding: 0.3em 1.5em;
+    padding: 0.1em 1em;
+    border-radius: 8px;
+    background-color:#ebebeb;
+    border: 1px #a3a3a3 solid;
     font-size: 0.8em;
+    box-sizing: border-box;
+}
+.modal-content > input[type="submit"]:hover {
+    box-sizing: border-box;
+    background-color: #e4e4e4;
+    border-color: #8b8b8b;
 }
