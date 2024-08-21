@@ -18,12 +18,12 @@ function addBookToLibrary(title, author, pages, read) {
 }
 
 // Add a bunch of books to the library array
-addBookToLibrary('The Hobbit', 'J.R.R. Tolkien', 300, "yes");
+addBookToLibrary('The Hobbit', 'J.R.R. Tolkien', 300, 'yes');
 addBookToLibrary('Narnia', 'C.S.S Lewis', 528, "yes");
-addBookToLibrary('Harry Potter');
-addBookToLibrary('Game of Thrones');
-addBookToLibrary('Lord of the Rings');
-addBookToLibrary('A Tale of Two Cities');
+addBookToLibrary('Harry Potter', 'J. K. Rowling', 320, 'no');
+addBookToLibrary('Game of Thrones', 'George R. R. Martin', 694, 'yes');
+addBookToLibrary('Lord of the Rings', 'J.R.R Tolkien', 1200, 'yes');
+addBookToLibrary('A Tale of Two Cities', 'Charles Dickens', 304, 'no');
 
 // Declare variable for element where books will be displayed
 let shelf = document.querySelector('.shelf');
@@ -93,24 +93,27 @@ function displayBooks() {
         shelfCard.appendChild(readNode);
 
         // Add button to update read status
+        const btnContainer = document.createElement("div");
+        shelfCard.appendChild(btnContainer);
         const updateReadBtn = document.createElement("button");
         updateReadBtn.setAttribute("id", `updateReadBtn${i}`);
         updateReadBtn.classList.add("update-read-btn");
         updateReadBtn.dataset.index = i; // Set data attribute giving reference for book index in array
         if (book.read === "yes") {
-            updateReadBtn.appendChild(document.createTextNode("Not Read Yet"));
+            updateReadBtn.appendChild(document.createTextNode("Not Finished"));
         } else {
-            updateReadBtn.appendChild(document.createTextNode("Finished Reading"));
+            updateReadBtn.appendChild(document.createTextNode("I've Finished!"));
+            updateReadBtn.classList.add("finished-btn")
         };
-        shelfCard.appendChild(updateReadBtn);
+        btnContainer.appendChild(updateReadBtn);
 
         // Add button that removes book
         const removeBookBtn = document.createElement("button");
         removeBookBtn.setAttribute("id", `removeBookBtn${i}`);
         removeBookBtn.classList.add("remove-book-btn")
         removeBookBtn.dataset.index = i; // Set data attribute giving reference for book removal from array
-        removeBookBtn.appendChild(document.createTextNode("Remove Book"));
-        shelfCard.appendChild(removeBookBtn);
+        removeBookBtn.appendChild(document.createTextNode("Delete"));
+        btnContainer.appendChild(removeBookBtn);
 
         shelf.appendChild(shelfCard);
     }

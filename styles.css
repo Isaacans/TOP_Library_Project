@@ -1,14 +1,21 @@
 * {
     box-sizing: border-box;
     line-height: 1.5;
+    font-family: system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    font: inherit;
 }
+button {
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+}
+
 .UI, .heading {
     width: 74rem;
     margin: 0rem auto;
 }
 
 .heading {
-    padding: 1rem 0rem 0.5rem;
+    padding: 1rem 0rem 0.8rem;
+    font-size: 2.5em;
 }
 
 .UI {
@@ -22,7 +29,7 @@
     border-radius: 10px;
     opacity: 1;
     cursor: pointer;
-    background-color: rgb(255 227 100);
+    background-color: #ffe364;
     border: 2px #a3a3a3 solid;
 }
 .UI button:hover {
@@ -47,18 +54,57 @@
 }
 
 .shelfCard {
-    background-color:rgb(241, 241, 241);
+    background-color:#ffffff;
     text-align: center;
     justify-content: center;
     display: flex;
     flex-direction: column;
-    gap: 0.4em;
+    gap: 0.7em;
     align-items: center;
-    padding: 1em;
+    padding: 0.1em;
     font-size: 1.2em;
+    border: 5px double rgb(196, 167, 128);
+    box-shadow: 8px 10px 10px #837a74, inset 0em 0em 5em rgb(230, 218, 163);
 }
 .shelfCard > div > span {
     font-weight: bold;
+}
+
+.shelf div.shelfCard div:last-child {
+    width: 85%;
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 2.5em;
+}
+
+.shelf button {
+    font-size: 0.8em;
+    padding: 0.5em 0.9em;
+    border-radius: 7px;
+    border-width: 1px;
+    background-color: #eee98e;
+    border-color: #747474;
+    cursor: pointer;
+    border: 1px lightgrey solid;
+}
+.shelf button.finished-btn {
+    background-color: #d5ecc6;
+}
+.shelf button.finished-btn:hover {
+    background-color: #c9ffa6;
+}
+.shelf button:hover {
+    background-color: rgb(250, 242, 100);
+    border: #7a773d 1px solid;
+}
+.shelf button + button {
+    opacity: 0.8;
+    background-color: #ffc9c9;
+}
+.shelf button + button:hover {
+    background-color: #ff7e7e;
+    opacity: 1;
+    border-color: rgb(65, 11, 11);
 }
 
 .form-modal {
