@@ -8,9 +8,10 @@ button {
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
 }
 
-.UI, .heading {
-    width: 74rem;
+.UI, .heading, .shelf {
+    width: min(105rem, 85vw);
     margin: 0rem auto;
+    
 }
 
 .heading {
@@ -37,10 +38,10 @@ button {
 }
 
 .shelf {
-    margin-top: 1rem;
-    padding: 3rem;
+    margin: 2rem auto;
+    padding: 2rem 0rem;
     display: grid;
-    grid-template-columns: repeat(4, 17rem);
+    grid-template-columns: repeat(auto-fit, minmax(17em, 1fr));
     grid-template-rows: 2.5em;
     grid-auto-rows: 19rem;
     gap: 2rem;
@@ -49,7 +50,7 @@ button {
 
 .shelf h1 {
     margin: 0;
-    grid-column: 1 / 5;
+    grid-column: 1 / -1;
     font-size: 2em;
 }
 
