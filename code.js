@@ -36,18 +36,25 @@ function displayBooks() {
     header.innerText += "Shelf";
     shelf.appendChild(header);
 
-    for (let book of myLibrary) {
+    for (let i = 0; i < myLibrary.length; i++) {
+        
+        // Set book from array index
+        const book = myLibrary[i];
+
+        // Create card for book options an info to be displayed on
         const shelfCard = document.createElement("div");
         shelfCard.classList.add("shelfCard");
 
+        // Add title info
         const titleNode = document.createElement("div");
         titleNode.classList.add("titleNode");
-        const titleSpan = document.createElement("span");
+        const titleSpan = document.createElement("span"); // Put into span to allow bold weight
         titleSpan.innerText = "Title: ";
         titleNode.appendChild(titleSpan);
         titleNode.appendChild(document.createTextNode(`${book.title}`));
         shelfCard.appendChild(titleNode);
 
+        // Add author name
         const authorNode = document.createElement("div");
         authorNode.classList.add("authorNode");
         const bySpan = document.createElement("span");
@@ -56,6 +63,7 @@ function displayBooks() {
         authorNode.appendChild(document.createTextNode(`${book.author}`));
         shelfCard.appendChild(authorNode);
         
+        // Add pages info
         const pagesNode = document.createElement("div");
         pagesNode.classList.add("pagesNode");
         const pagesSpan = document.createElement("span");
@@ -64,6 +72,7 @@ function displayBooks() {
         pagesNode.appendChild(document.createTextNode(`${book.pages}`));
         shelfCard.appendChild(pagesNode);
 
+        // Add info on read status 
         const readNode = document.createElement("div");
         readNode.classList.add("readNode");
         const readSpan = document.createElement("span");
@@ -82,6 +91,26 @@ function displayBooks() {
         };
         readNode.appendChild(document.createTextNode(readText));
         shelfCard.appendChild(readNode);
+
+        // Add button to update read status
+        const updateReadBtn = document.createElement("button");
+        updateReadBtn.setAttribute("id", `updateReadBtn${i}`);
+        updateReadBtn.classList.add("update-read-btn");
+        updateReadBtn.dataset.index = i; // Set data attribute giving reference for book index in array
+        if (book.read === "yes") {
+            updateReadBtn.appendChild(document.createTextNode("Not Read Yet"));
+        } else {
+            updateReadBtn.appendChild(document.createTextNode("Finished Reading"));
+        };
+        shelfCard.appendChild(updateReadBtn);
+
+        // Add button that removes book
+        const removeBookBtn = document.createElement("button");
+        removeBookBtn.setAttribute("id", `removeBookBtn${i}`);
+        removeBookBtn.classList.add("remove-book-btn")
+        removeBookBtn.dataset.index = i; // Set data attribute giving reference for book removal from array
+        removeBookBtn.appendChild(document.createTextNode("Remove Book"));
+        shelfCard.appendChild(removeBookBtn);
 
         shelf.appendChild(shelfCard);
     }
@@ -116,11 +145,12 @@ window.onclick = function(event) {
     }
 }
 
-// Declare variables to collect new book form data
+// Declare variables to collect new book data from form
 const submitBtn = modal.querySelector(".modal-content input[type='submit']");
 
 submitBtn.onclick = submitBook;
 
+// Declare function which adds book to library array
 function submitBook(event) {
     event.preventDefault(); // Prevents form submission 
     const title = document.getElementById("title");
@@ -144,3 +174,28 @@ function submitBook(event) {
         read.value = "default";
     }
 }
+
+// Declare function which removes book from library array and shelf display
+function removeBook(index) {
+    myLibrary.splice(index, 1); // Use splice to remove the indexed book from array
+    displayBooks(); // Redisplay books in myLibrary index
+}
+
+// Detect buttons to remove book or update read status
+shelf.addEventListener('click', (clickEvent) => {
+    // Handle read status button
+    if (clickEvent.target.tagName === 'BUTTON' && clickEvent.target.classList.contains("update-read-btn")) {
+        if (myLibrary[clickEvent.target.dataset.index].read === "yes") {
+            myLibrary[clickEvent.target.dataset.index].read = "no";
+        } else {
+            myLibrary[clickEvent.target.dataset.index].read = "yes";
+        };
+    }
+    // Handle remove book button
+    if (clickEvent.target.tagName === 'BUTTON' && clickEvent.target.classList.contains("remove-book-btn")) {
+        removeBook(clickEvent.target.dataset.index);
+    }
+
+    displayBooks(); // Re-display the updated information
+});
+
