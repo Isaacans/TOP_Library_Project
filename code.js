@@ -156,6 +156,7 @@ submitBtn.onclick = submitBook;
 // Declare function which adds book to library array
 function submitBook(event) {
     event.preventDefault(); // Prevents form submission 
+    const form = document.querySelector("form");
     const title = document.getElementById("title");
     const author = document.getElementById("author");
     const pages = document.getElementById("pages");
@@ -170,11 +171,8 @@ function submitBook(event) {
         addBookToLibrary(title.value, author.value, pages.value, read.value);
         displayBooks(); // Redisplayed books
         closeModal();
-        // Clears form fields
-        title.value = "";
-        author.value = "";
-        pages.value = "";
-        read.value = "default";
+        // Reset the form
+        form.reset();
     }
 }
 
