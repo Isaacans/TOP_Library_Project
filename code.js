@@ -3,12 +3,18 @@
 const myLibrary = [];
 
 
-// Declare constructor to create book objects
-function Book(title, author="Not Specified", pages="Not Specified", read="Not Specified") {
-    this.title = title;
-    this.author = author;
-    this.pages = pages;
-    this.read = read;
+// Declare the book class from which to create book objects
+class Book {
+    title;
+    author;
+    pages;
+    read;
+    constructor(title, author = "Not Specified", pages = "Not Specified", read = "Not Specified") {
+        this.title = title;
+        this.author = author;
+        this.pages = pages;
+        this.read = read;
+    }
 }
 
 // Declare function to add books to library array
@@ -127,6 +133,7 @@ const modal = document.querySelector(".form-modal")
 
 function openModal() {
     modal.style.display = "block"; // Changes display from none to make element visible
+    document.getElementById("title").focus() // Give focus to the input title text field
     document.addEventListener('keydown', OnEscapePressed); // Creates listener for escape key
 }
 function closeModal() {
@@ -185,6 +192,9 @@ function removeBook(index) {
 // Detect buttons to remove book or update read status
 shelf.addEventListener('click', (clickEvent) => {
     // Handle read status button
+
+    if (clickEvent.target.tagName !== 'BUTTON') return
+
     if (clickEvent.target.tagName === 'BUTTON' && clickEvent.target.classList.contains("update-read-btn")) {
         if (myLibrary[clickEvent.target.dataset.index].read === "yes") {
             myLibrary[clickEvent.target.dataset.index].read = "no";
