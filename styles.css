@@ -83,20 +83,20 @@ button {
     padding: 0.5em 0.9em;
     border-radius: 7px;
     border-width: 1px;
-    background-color: #eee98e;
+    background-color: #d5ecc6;
     border-color: #747474;
     cursor: pointer;
     border: 1px lightgrey solid;
 }
+.shelf button:hover {
+    background-color: #c9ffa6;
+    border: #7a773d 1px solid;
+}
 .shelf button.finished-btn {
-    background-color: #d5ecc6;
+    background-color: #eee98e;
 }
 .shelf button.finished-btn:hover {
-    background-color: #c9ffa6;
-}
-.shelf button:hover {
     background-color: rgb(250, 242, 100);
-    border: #7a773d 1px solid;
 }
 .shelf button + button {
     opacity: 0.8;
